@@ -48,30 +48,30 @@ export const Header = () => {
   return (
     <div className="w-full">
       {/* Top banner */}
-      <div className="bg-primary text-primary-foreground text-center py-2 px-4 text-sm font-medium">
+      <div className="bg-primary text-primary-foreground text-center py-3 px-6 text-sm font-medium tracking-wide">
         15% Off + Free Gift Worth ₹499 on Orders Above ₹1499
       </div>
 
       {/* Main header */}
-      <header className="bg-background border-b border-border sticky top-0 z-50 shadow-sm">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
+      <header className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0 z-50 shadow-sm">
+        <div className="container mx-auto container-padding">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex items-center space-x-2">
               <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-lg">OI</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-lg text-primary">ORGANIC</span>
-                <span className="font-bold text-lg text-secondary -mt-1">INDIA</span>
+                <span className="font-display font-bold text-xl text-primary tracking-wide">ORGANIC</span>
+                <span className="font-display font-bold text-xl text-secondary -mt-1 tracking-wide">INDIA</span>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-10">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="hover:text-primary">
+                  <Button variant="ghost" className="hover:text-primary font-medium tracking-wide">
                     Shop by Category
                   </Button>
                 </DropdownMenuTrigger>
@@ -96,16 +96,16 @@ export const Header = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <Button variant="ghost" className="hover:text-primary">
+              <Button variant="ghost" className="hover:text-primary font-medium tracking-wide">
                 Deal of the Day
               </Button>
-              <Button variant="ghost" className="hover:text-primary">
+              <Button variant="ghost" className="hover:text-primary font-medium tracking-wide">
                 Blogs
               </Button>
-              <Button variant="ghost" className="hover:text-primary">
+              <Button variant="ghost" className="hover:text-primary font-medium tracking-wide">
                 Value Deals
               </Button>
-              <Button variant="ghost" className="hover:text-primary">
+              <Button variant="ghost" className="hover:text-primary font-medium tracking-wide">
                 Track Your Order
               </Button>
             </nav>
@@ -118,7 +118,7 @@ export const Header = () => {
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
                     placeholder="Search products..."
-                    className="pl-10 w-64"
+                    className="pl-10 w-72 premium-input"
                   />
                 </div>
               </div>
@@ -161,12 +161,12 @@ export const Header = () => {
           </div>
 
           {/* Mobile search */}
-          <div className="md:hidden py-3 border-t border-border">
+          <div className="md:hidden py-4 border-t border-border container-padding">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="Search products..."
-                className="pl-10 w-full"
+                className="pl-10 w-full premium-input"
               />
             </div>
           </div>

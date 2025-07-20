@@ -136,6 +136,15 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+    font-feature-settings: "ss01", "ss02";
   }
 
   /* Custom scrollbar */
@@ -187,18 +196,51 @@ All colors MUST be HSL.
   }
 
   .hover-lift {
-    @apply transition-organic hover:scale-105 hover:shadow-card;
+    @apply transition-organic hover:scale-[1.02] hover:shadow-card;
   }
 
   .product-card {
-    @apply bg-card border border-border rounded-lg p-4 shadow-card hover-lift transition-organic;
+    @apply bg-card border border-border rounded-xl p-6 shadow-card hover-lift transition-organic;
   }
 
   .btn-organic {
-    @apply bg-primary text-primary-foreground px-6 py-2 rounded-lg shadow-button hover:shadow-organic transition-organic hover:scale-105;
+    @apply bg-primary text-primary-foreground px-8 py-3 rounded-xl shadow-button hover:shadow-organic transition-organic hover:scale-105 font-medium tracking-wide;
   }
 
   .btn-secondary-organic {
-    @apply bg-secondary text-secondary-foreground px-6 py-2 rounded-lg shadow-button hover:shadow-organic transition-organic hover:scale-105;
+    @apply bg-secondary text-secondary-foreground px-8 py-3 rounded-xl shadow-button hover:shadow-organic transition-organic hover:scale-105 font-medium tracking-wide;
+  }
+
+  /* Premium spacing utilities */
+  .section-padding {
+    @apply py-24 lg:py-32;
+  }
+
+  .container-padding {
+    @apply px-6 lg:px-8 xl:px-12;
+  }
+
+  .premium-text {
+    @apply tracking-wide leading-relaxed;
+  }
+
+  .premium-heading {
+    @apply font-display font-semibold tracking-tight leading-tight;
+  }
+
+  .premium-subheading {
+    @apply font-display font-medium tracking-wide text-muted-foreground;
+  }
+
+  .premium-card {
+    @apply bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 shadow-card hover:shadow-organic transition-all duration-500 hover:bg-card/80;
+  }
+
+  .premium-button {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-button hover:shadow-organic;
+  }
+
+  .premium-input {
+    @apply flex h-12 w-full rounded-xl border border-input bg-background/50 backdrop-blur-sm px-4 py-3 text-sm ring-offset-background transition-all duration-300 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
   }
 }

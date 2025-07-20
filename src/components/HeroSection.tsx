@@ -2,45 +2,45 @@ import { Check, Users, Globe } from "lucide-react";
 
 export const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden hero-gradient">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+    <section className="relative overflow-hidden hero-gradient section-padding">
+      <div className="container mx-auto container-padding">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
-          <div className="space-y-6 animate-gentle-fade">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
+          <div className="space-y-8 animate-gentle-fade">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl premium-heading text-primary">
               Authentically Organic,{" "}
               <span className="text-secondary">not just in name.</span>
             </h1>
             
             {/* Trust indicators */}
-            <div className="flex flex-wrap gap-6 mt-8">
-              <div className="flex items-center space-x-3 bg-card p-4 rounded-lg shadow-card">
+            <div className="flex flex-wrap gap-8 mt-12">
+              <div className="flex items-center space-x-4 premium-card">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                   <Check className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <div className="font-bold text-2xl text-primary">600+</div>
-                  <div className="text-sm text-muted-foreground">tests on herbs</div>
+                  <div className="font-display font-bold text-3xl text-primary">600+</div>
+                  <div className="text-sm premium-text text-muted-foreground">tests on herbs</div>
                 </div>
               </div>
               
-              <div className="flex items-center space-x-3 bg-card p-4 rounded-lg shadow-card">
+              <div className="flex items-center space-x-4 premium-card">
                 <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
                   <Users className="h-6 w-6 text-secondary" />
                 </div>
                 <div>
-                  <div className="font-bold text-2xl text-secondary">Direct</div>
-                  <div className="text-sm text-muted-foreground">sourcing from 2000+ farmers</div>
+                  <div className="font-display font-bold text-3xl text-secondary">Direct</div>
+                  <div className="text-sm premium-text text-muted-foreground">sourcing from 2000+ farmers</div>
                 </div>
               </div>
               
-              <div className="flex items-center space-x-3 bg-card p-4 rounded-lg shadow-card">
+              <div className="flex items-center space-x-4 premium-card">
                 <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
                   <Globe className="h-6 w-6 text-accent-foreground" />
                 </div>
                 <div>
-                  <div className="font-bold text-2xl text-accent-foreground">Global</div>
-                  <div className="text-sm text-muted-foreground">organic certifications</div>
+                  <div className="font-display font-bold text-3xl text-accent-foreground">Global</div>
+                  <div className="text-sm premium-text text-muted-foreground">organic certifications</div>
                 </div>
               </div>
             </div>
