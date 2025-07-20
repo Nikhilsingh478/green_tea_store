@@ -8,35 +8,61 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Organic India inspired color palette */
+    --background: 32 15% 98%;
+    --foreground: 28 25% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 32 15% 98%;
+    --card-foreground: 28 25% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 32 15% 98%;
+    --popover-foreground: 28 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary: Deep forest green */
+    --primary: 142 45% 25%;
+    --primary-foreground: 32 15% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary: Warm orange/terracotta */
+    --secondary: 22 85% 55%;
+    --secondary-foreground: 32 15% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted: Sage green */
+    --muted: 120 15% 90%;
+    --muted-foreground: 28 25% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent: Golden wheat */
+    --accent: 45 75% 75%;
+    --accent-foreground: 28 25% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 32 15% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 120 15% 85%;
+    --input: 120 15% 92%;
+    --ring: 142 45% 25%;
 
-    --radius: 0.5rem;
+    /* Custom organic colors */
+    --organic-green: 142 45% 25%;
+    --organic-green-light: 142 35% 45%;
+    --organic-orange: 22 85% 55%;
+    --organic-cream: 45 30% 95%;
+    --organic-sage: 120 20% 85%;
+    --organic-earth: 28 40% 25%;
+
+    /* Gradients */
+    --gradient-organic: linear-gradient(135deg, hsl(var(--organic-green)), hsl(var(--organic-green-light)));
+    --gradient-hero: linear-gradient(180deg, hsl(var(--organic-cream)), hsl(var(--organic-sage)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--background)), hsl(var(--muted)));
+
+    /* Shadows */
+    --shadow-organic: 0 8px 32px hsl(var(--organic-green) / 0.15);
+    --shadow-card: 0 4px 16px hsl(var(--organic-green) / 0.1);
+    --shadow-button: 0 2px 8px hsl(var(--organic-orange) / 0.3);
+
+    /* Animations */
+    --transition-organic: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +82,50 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 28 25% 8%;
+    --foreground: 32 15% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 28 25% 10%;
+    --card-foreground: 32 15% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 28 25% 10%;
+    --popover-foreground: 32 15% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 142 50% 65%;
+    --primary-foreground: 28 25% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 22 75% 45%;
+    --secondary-foreground: 32 15% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 28 20% 15%;
+    --muted-foreground: 32 15% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 45 60% 60%;
+    --accent-foreground: 28 25% 8%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 32 15% 95%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 28 20% 20%;
+    --input: 28 20% 15%;
+    --ring: 142 50% 65%;
+
+    /* Dark mode organic colors */
+    --organic-green: 142 50% 65%;
+    --organic-green-light: 142 40% 75%;
+    --organic-orange: 22 75% 45%;
+    --organic-cream: 45 20% 20%;
+    --organic-sage: 120 15% 20%;
+    --organic-earth: 28 40% 85%;
+
+    --sidebar-background: 28 25% 8%;
+    --sidebar-foreground: 32 15% 85%;
+    --sidebar-primary: 142 50% 65%;
+    --sidebar-primary-foreground: 28 25% 8%;
+    --sidebar-accent: 28 20% 15%;
+    --sidebar-accent-foreground: 32 15% 85%;
+    --sidebar-border: 28 20% 20%;
+    --sidebar-ring: 142 50% 65%;
   }
 }
 
@@ -100,6 +135,70 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  .organic-gradient {
+    background: var(--gradient-organic);
+  }
+
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+
+  .shadow-organic {
+    box-shadow: var(--shadow-organic);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-button {
+    box-shadow: var(--shadow-button);
+  }
+
+  .transition-organic {
+    transition: var(--transition-organic);
+  }
+
+  .hover-lift {
+    @apply transition-organic hover:scale-105 hover:shadow-card;
+  }
+
+  .product-card {
+    @apply bg-card border border-border rounded-lg p-4 shadow-card hover-lift transition-organic;
+  }
+
+  .btn-organic {
+    @apply bg-primary text-primary-foreground px-6 py-2 rounded-lg shadow-button hover:shadow-organic transition-organic hover:scale-105;
+  }
+
+  .btn-secondary-organic {
+    @apply bg-secondary text-secondary-foreground px-6 py-2 rounded-lg shadow-button hover:shadow-organic transition-organic hover:scale-105;
   }
 }

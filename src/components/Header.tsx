@@ -1,0 +1,200 @@
+import { useState } from "react";
+import { Search, ShoppingCart, User, Menu, X, Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+const categories = [
+  {
+    name: "Teas & Infusions",
+    items: ["Green Tea", "Wellness Tea", "Infusion"]
+  },
+  {
+    name: "Herbal Supplement",
+    items: ["Condition Specific", "Daily Nutrition"]
+  },
+  {
+    name: "Packaged Food",
+    items: ["Dal & Pulses", "Health Food", "Oil & Ghee", "Salt & Spices"]
+  },
+  {
+    name: "Personal Care",
+    items: ["Body Care", "Face Care", "Hair Care"]
+  },
+  {
+    name: "Detox Program",
+    items: ["Detox"]
+  },
+  {
+    name: "Gifting",
+    items: ["Gifting"]
+  }
+];
+
+export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [cartCount] = useState(0);
+  const [wishlistCount] = useState(0);
+
+  return (
+    <div className="w-full">
+      {/* Top banner */}
+      <div className="bg-primary text-primary-foreground text-center py-2 px-4 text-sm font-medium">
+        15% Off + Free Gift Worth ₹499 on Orders Above ₹1499
+      </div>
+
+      {/* Main header */}
+      <header className="bg-background border-b border-border sticky top-0 z-50 shadow-sm">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center space-x-2">
+              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-lg">OI</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-bold text-lg text-primary">ORGANIC</span>
+                <span className="font-bold text-lg text-secondary -mt-1">INDIA</span>
+              </div>
+            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-8">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="hover:text-primary">
+                    Shop by Category
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-80 p-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    {categories.map((category) => (
+                      <div key={category.name}>
+                        <DropdownMenuLabel className="text-primary font-semibold">
+                          {category.name}
+                        </DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuGroup>
+                          {category.items.map((item) => (
+                            <DropdownMenuItem key={item} className="cursor-pointer hover:bg-muted">
+                              {item}
+                            </DropdownMenuItem>
+                          ))}
+                        </DropdownMenuGroup>
+                      </div>
+                    ))}
+                  </div>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              <Button variant="ghost" className="hover:text-primary">
+                Deal of the Day
+              </Button>
+              <Button variant="ghost" className="hover:text-primary">
+                Blogs
+              </Button>
+              <Button variant="ghost" className="hover:text-primary">
+                Value Deals
+              </Button>
+              <Button variant="ghost" className="hover:text-primary">
+                Track Your Order
+              </Button>
+            </nav>
+
+            {/* Search, Account, and Cart */}
+            <div className="flex items-center space-x-4">
+              {/* Search */}
+              <div className="hidden md:flex items-center space-x-2">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    placeholder="Search products..."
+                    className="pl-10 w-64"
+                  />
+                </div>
+              </div>
+
+              {/* Account */}
+              <Button variant="ghost" size="icon" className="hover:text-primary">
+                <User className="h-5 w-5" />
+              </Button>
+
+              {/* Wishlist */}
+              <Button variant="ghost" size="icon" className="hover:text-primary relative">
+                <Heart className="h-5 w-5" />
+                {wishlistCount > 0 && (
+                  <Badge className="absolute -top-2 -right-2 h-5 w-5 p-0 text-xs bg-secondary">
+                    {wishlistCount}
+                  </Badge>
+                )}
+              </Button>
+
+              {/* Cart */}
+              <Button variant="ghost" size="icon" className="hover:text-primary relative">
+                <ShoppingCart className="h-5 w-5" />
+                {cartCount > 0 && (
+                  <Badge className="absolute -top-2 -right-2 h-5 w-5 p-0 text-xs bg-secondary">
+                    {cartCount}
+                  </Badge>
+                )}
+              </Button>
+
+              {/* Mobile menu button */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="lg:hidden"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
+          </div>
+
+          {/* Mobile search */}
+          <div className="md:hidden py-3 border-t border-border">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Search products..."
+                className="pl-10 w-full"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="lg:hidden border-t border-border bg-background">
+            <nav className="container mx-auto px-4 py-4 space-y-2">
+              <Button variant="ghost" className="w-full justify-start hover:text-primary">
+                Shop by Category
+              </Button>
+              <Button variant="ghost" className="w-full justify-start hover:text-primary">
+                Deal of the Day
+              </Button>
+              <Button variant="ghost" className="w-full justify-start hover:text-primary">
+                Blogs
+              </Button>
+              <Button variant="ghost" className="w-full justify-start hover:text-primary">
+                Value Deals
+              </Button>
+              <Button variant="ghost" className="w-full justify-start hover:text-primary">
+                Track Your Order
+              </Button>
+            </nav>
+          </div>
+        )}
+      </header>
+    </div>
+  );
+};
