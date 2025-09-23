@@ -47,6 +47,7 @@ All colors MUST be HSL.
     --organic-orange: 22 85% 55%;
     --organic-cream: 45 30% 95%;
     --organic-sage: 120 20% 85%;
+    --organic-terra: 28 40% 25%;
     --organic-earth: 28 40% 25%;
 
     /* Gradients */
@@ -116,6 +117,7 @@ All colors MUST be HSL.
     --organic-orange: 22 75% 45%;
     --organic-cream: 45 20% 20%;
     --organic-sage: 120 15% 20%;
+    --organic-terra: 28 40% 85%;
     --organic-earth: 28 40% 85%;
 
     --sidebar-background: 28 25% 8%;
@@ -213,11 +215,11 @@ All colors MUST be HSL.
 
   /* Premium spacing utilities */
   .section-padding {
-    @apply py-24 lg:py-32;
+    @apply py-16 lg:py-24;
   }
 
   .container-padding {
-    @apply px-6 lg:px-8 xl:px-12;
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12 max-w-7xl;
   }
 
   .premium-text {
@@ -233,14 +235,29 @@ All colors MUST be HSL.
   }
 
   .premium-card {
-    @apply bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 shadow-card hover:shadow-organic transition-all duration-500 hover:bg-card/80;
+    @apply bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 lg:p-8 shadow-card hover:shadow-organic transition-all duration-500 hover:bg-card/80;
   }
 
   .premium-button {
-    @apply inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-button hover:shadow-organic;
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-button hover:shadow-organic hover:scale-[1.02];
   }
 
   .premium-input {
     @apply flex h-12 w-full rounded-xl border border-input bg-background/50 backdrop-blur-sm px-4 py-3 text-sm ring-offset-background transition-all duration-300 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    .container-padding {
+      @apply px-4;
+    }
+    
+    .section-padding {
+      @apply py-12;
+    }
+    
+    .premium-card {
+      @apply p-4;
+    }
   }
 }

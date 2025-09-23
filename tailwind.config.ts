@@ -68,6 +68,7 @@ export default {
 					orange: 'hsl(var(--organic-orange))',
 					cream: 'hsl(var(--organic-cream))',
 					sage: 'hsl(var(--organic-sage))',
+					terra: 'hsl(var(--organic-terra))',
 					earth: 'hsl(var(--organic-earth))'
 				}
 			},
