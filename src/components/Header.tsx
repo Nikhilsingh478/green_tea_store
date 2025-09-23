@@ -75,7 +75,7 @@ export const Header = () => {
                     Shop by Category
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-80 p-4">
+                <DropdownMenuContent className="w-72 lg:w-80 p-4">
                   <div className="grid grid-cols-2 gap-4">
                     {categories.map((category) => (
                       <div key={category.name}>
@@ -118,7 +118,7 @@ export const Header = () => {
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
                     placeholder="Search products..."
-                    className="pl-10 w-72 premium-input"
+                    className="pl-10 w-48 lg:w-64 xl:w-72 premium-input"
                   />
                 </div>
               </div>
@@ -161,7 +161,7 @@ export const Header = () => {
           </div>
 
           {/* Mobile search */}
-          <div className="md:hidden py-4 border-t border-border container-padding">
+          <div className="md:hidden py-4 border-t border-border px-4">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
