@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
+import { useCart } from "@/hooks/useCart";
 import { herbalTeas, citrusTeas, spiceTeas, type Product } from "@/data/products";
 
 interface ProductSectionProps {
@@ -17,12 +18,14 @@ interface ProductSectionProps {
 const ProductSection = ({ title, subtitle, products, bgGradient }: ProductSectionProps) => {
   const [wishlist, setWishlist] = useState<number[]>([]);
   const { toast } = useToast();
+  const { addToCart: addToCartHook } = useCart();
   const navigate = useNavigate();
 
-  const addToCart = (productId: number, productName: string) => {
+  const handleAddToCart = (product: Product) => {
+    addToCartHook(product);
     toast({
       title: "Added to Cart",
-      description: `${productName} has been added to your cart.`,
+      description: `${product.name} has been added to your cart.`,
     });
   };
 
@@ -141,7 +144,7 @@ const ProductSection = ({ title, subtitle, products, bgGradient }: ProductSectio
                   className="w-full premium-button bg-primary text-primary-foreground h-12 text-sm font-semibold tracking-wide"
                   onClick={(e) => {
                     e.stopPropagation();
-                    addToCart(product.id, product.name);
+                    handleAddToCart(product);
                   }}
                 >
                   <ShoppingCart className="h-4 w-4 mr-2" />

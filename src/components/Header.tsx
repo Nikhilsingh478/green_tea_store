@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Search, ShoppingCart, User, Menu, X, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,6 +13,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { allProducts } from "@/data/products";
+import { useCart } from "@/hooks/useCart";
+import { CartSidebar } from "@/components/CartSidebar";
 
 const categories = [
   {
@@ -40,10 +44,31 @@ const categories = [
   }
 ];
 
-export const Header = () => {
+interface HeaderProps {
+  onSearch?: (query: string) => void;
+  onCategoryFilter?: (category: string) => void;
+}
+
+export const Header = ({ onSearch, onCategoryFilter }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [cartCount] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const [wishlistCount] = useState(0);
+  const { getTotalItems } = useCart();
+  const navigate = useNavigate();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim() && onSearch) {
+      onSearch(searchQuery.trim());
+    }
+  };
+
+  const handleCategoryClick = (category: string) => {
+    if (onCategoryFilter) {
+      onCategoryFilter(category);
+    }
+  };
 
   return (
     <div className="w-full">
@@ -85,7 +110,11 @@ export const Header = () => {
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
                           {category.items.map((item) => (
-                            <DropdownMenuItem key={item} className="cursor-pointer hover:bg-muted">
+                            <DropdownMenuItem 
+                              key={item} 
+                              className="cursor-pointer hover:bg-muted"
+                              onClick={() => handleCategoryClick(item.toLowerCase())}
+                            >
                               {item}
                             </DropdownMenuItem>
                           ))}
@@ -99,7 +128,7 @@ export const Header = () => {
               <Button variant="ghost" className="hover:text-primary font-medium tracking-wide">
                 Deal of the Day
               </Button>
-              <Button variant="ghost" className="hover:text-primary font-medium tracking-wide">
+              <Button variant="ghost" className="hover:text-primary font-medium tracking-wide" onClick={() => navigate('/blogs')}>
                 Blogs
               </Button>
               <Button variant="ghost" className="hover:text-primary font-medium tracking-wide">
@@ -114,13 +143,15 @@ export const Header = () => {
             <div className="flex items-center space-x-4">
               {/* Search */}
               <div className="hidden md:flex items-center space-x-2">
-                <div className="relative">
+                <form onSubmit={handleSearch} className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
                     placeholder="Search products..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-10 w-48 lg:w-64 xl:w-72 premium-input"
                   />
-                </div>
+                </form>
               </div>
 
               {/* Account */}
@@ -139,11 +170,16 @@ export const Header = () => {
               </Button>
 
               {/* Cart */}
-              <Button variant="ghost" size="icon" className="hover:text-primary relative">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="hover:text-primary relative"
+                onClick={() => setIsCartOpen(true)}
+              >
                 <ShoppingCart className="h-5 w-5" />
-                {cartCount > 0 && (
+                {getTotalItems() > 0 && (
                   <Badge className="absolute -top-2 -right-2 h-5 w-5 p-0 text-xs bg-secondary">
-                    {cartCount}
+                    {getTotalItems()}
                   </Badge>
                 )}
               </Button>
@@ -162,13 +198,15 @@ export const Header = () => {
 
           {/* Mobile search */}
           <div className="md:hidden py-4 border-t border-border px-4">
-            <div className="relative">
+            <form onSubmit={handleSearch} className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 w-full premium-input"
               />
-            </div>
+            </form>
           </div>
         </div>
 
@@ -182,7 +220,7 @@ export const Header = () => {
               <Button variant="ghost" className="w-full justify-start hover:text-primary">
                 Deal of the Day
               </Button>
-              <Button variant="ghost" className="w-full justify-start hover:text-primary">
+              <Button variant="ghost" className="w-full justify-start hover:text-primary" onClick={() => navigate('/blogs')}>
                 Blogs
               </Button>
               <Button variant="ghost" className="w-full justify-start hover:text-primary">
@@ -195,6 +233,9 @@ export const Header = () => {
           </div>
         )}
       </header>
+
+      {/* Cart Sidebar */}
+      <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </div>
   );
 };
