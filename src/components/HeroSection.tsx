@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden min-h-[95vh] flex items-center bg-gradient-to-br from-background via-muted/30 to-primary/5">
+    <section className="hero-container bg-gradient-to-br from-background via-muted/30 to-primary/5">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>

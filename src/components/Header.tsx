@@ -176,12 +176,12 @@ export const Header = ({ onSearch, onCategoryFilter }: HeaderProps) => {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="hover:text-primary relative"
+                className="cart-button hover:text-primary relative z-50"
                 onClick={() => setIsCartOpen(true)}
               >
-                <ShoppingCart className="h-5 w-5" />
+                <ShoppingCart className="h-5 w-5 text-foreground hover:text-primary transition-colors" />
                 {getTotalItems() > 0 && (
-                  <Badge className="absolute -top-2 -right-2 h-5 w-5 p-0 text-xs bg-secondary">
+                  <Badge className="absolute -top-2 -right-2 h-5 w-5 p-0 text-xs bg-secondary text-secondary-foreground font-semibold">
                     {getTotalItems()}
                   </Badge>
                 )}
