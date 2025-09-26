@@ -19,28 +19,31 @@ import { CartSidebar } from "@/components/CartSidebar";
 
 const categories = [
   {
-    name: "Teas & Infusions",
-    items: ["Green Tea", "Wellness Tea", "Infusion"]
+    name: "Tea Categories",
+    items: [
+      { label: "All Products", value: "all" },
+      { label: "Herbal Teas", value: "herbal" },
+      { label: "Citrus Teas", value: "citrus" },
+      { label: "Spice Teas", value: "spice" }
+    ]
   },
   {
-    name: "Herbal Supplement",
-    items: ["Condition Specific", "Daily Nutrition"]
+    name: "Popular Blends",
+    items: [
+      { label: "Chamomile Green Tea", value: "chamomile" },
+      { label: "Lemon Green Tea", value: "lemon" },
+      { label: "Mint Green Tea", value: "mint" },
+      { label: "Jasmine Green Tea", value: "jasmine" }
+    ]
   },
   {
-    name: "Packaged Food",
-    items: ["Dal & Pulses", "Health Food", "Oil & Ghee", "Salt & Spices"]
-  },
-  {
-    name: "Personal Care",
-    items: ["Body Care", "Face Care", "Hair Care"]
-  },
-  {
-    name: "Detox Program",
-    items: ["Detox"]
-  },
-  {
-    name: "Gifting",
-    items: ["Gifting"]
+    name: "Wellness Focus",
+    items: [
+      { label: "Stress Relief", value: "stress" },
+      { label: "Digestive Support", value: "digestive" },
+      { label: "Immunity Boost", value: "immunity" },
+      { label: "Energy Blend", value: "energy" }
+    ]
   }
 ];
 
@@ -111,11 +114,11 @@ export const Header = ({ onSearch, onCategoryFilter }: HeaderProps) => {
                         <DropdownMenuGroup>
                           {category.items.map((item) => (
                             <DropdownMenuItem 
-                              key={item} 
+                              key={item.value} 
                               className="cursor-pointer hover:bg-muted"
-                              onClick={() => handleCategoryClick(item.toLowerCase())}
+                              onClick={() => handleCategoryClick(item.value)}
                             >
-                              {item}
+                              {item.label}
                             </DropdownMenuItem>
                           ))}
                         </DropdownMenuGroup>

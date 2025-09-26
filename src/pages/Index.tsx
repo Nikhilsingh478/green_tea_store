@@ -27,11 +27,21 @@ const Index = () => {
   const handleCategoryFilter = (category: string) => {
     if (category === 'all') {
       setFilteredProducts(allProducts);
-    } else {
+      setSearchQuery("All Products");
+    } else if (['herbal', 'citrus', 'spice'].includes(category)) {
       const results = getProductsByCategory(category as 'herbal' | 'citrus' | 'spice');
       setFilteredProducts(results);
+      setSearchQuery(`${category.charAt(0).toUpperCase() + category.slice(1)} Teas`);
+    } else {
+      // Handle specific product searches or wellness categories
+      const results = allProducts.filter(product =>
+        product.name.toLowerCase().includes(category.toLowerCase()) ||
+        product.description.toLowerCase().includes(category.toLowerCase()) ||
+        product.benefits.some(benefit => benefit.toLowerCase().includes(category.toLowerCase()))
+      );
+      setFilteredProducts(results);
+      setSearchQuery(`Products: ${category}`);
     }
-    setSearchQuery(`Category: ${category}`);
     setIsSearching(true);
   };
 

@@ -266,4 +266,17 @@ All colors MUST be HSL.
       @apply p-4;
     }
   }
+
+  /* New premium animations */
+  .animate-gradient-x {
+    animation: gradient-x 6s ease infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .bg-300% {
+    background-size: 300% 300%;
+  }
 }

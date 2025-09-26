@@ -3,79 +3,84 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
+import teaGardenImage from "@/assets/blog-tea-garden.jpg";
+import wellnessImage from "@/assets/blog-wellness.jpg";
+import ceremonyImage from "@/assets/blog-ceremony.jpg";
+import antioxidantsImage from "@/assets/blog-antioxidants.jpg";
+import organicImage from "@/assets/blog-organic.jpg";
 
 const blogPosts = [
   {
     id: 1,
-    title: "The Ultimate Guide to Green Tea: Benefits and Brewing Tips",
-    excerpt: "Discover the incredible health benefits of green tea and learn the art of brewing the perfect cup. From antioxidants to metabolism boosting properties...",
-    content: "Green tea has been cherished for centuries, not just for its delicate flavor but for its remarkable health benefits. Rich in catechins and EGCG, green tea offers powerful antioxidant properties that can help protect your cells from damage...",
+    title: "The Benefits of Green Tea for Daily Wellness",
+    excerpt: "Discover how incorporating organic green tea into your daily routine can boost your immunity, improve mental clarity, and support overall health.",
+    content: "Green tea has been celebrated for centuries for its remarkable health benefits. Rich in antioxidants, particularly catechins and EGCG, green tea supports cardiovascular health, boosts metabolism, and may help protect against certain chronic diseases.",
     author: "Dr. Priya Sharma",
     date: "2024-03-15",
-    readTime: "8 min read",
-    category: "Health & Wellness",
-    image: "/api/placeholder/600/300",
-    tags: ["Green Tea", "Health", "Antioxidants", "Brewing"]
+    readTime: "5 min read",
+    category: "Wellness",
+    image: wellnessImage,
+    tags: ["Green Tea", "Health", "Antioxidants", "Wellness"]
   },
   {
     id: 2,
-    title: "Ayurvedic Herbs in Modern Times: Traditional Wisdom Meets Science",
-    excerpt: "Explore how ancient Ayurvedic herbs like Tulsi, Ashwagandha, and Turmeric are being validated by modern scientific research...",
-    content: "Ayurveda, the ancient Indian system of medicine, has been using herbs for over 5,000 years. Today, modern science is catching up and validating many of these traditional practices...",
-    author: "Raj Patel",
-    date: "2024-03-12",
-    readTime: "6 min read",
-    category: "Ayurveda",
-    image: "/api/placeholder/600/300",
-    tags: ["Ayurveda", "Herbs", "Traditional Medicine", "Science"]
+    title: "Sustainable Tea Farming: Our Commitment to the Environment",
+    excerpt: "Learn about our eco-friendly farming practices and how we're working with local communities to create a sustainable tea ecosystem.",
+    content: "At Organic India, sustainability isn't just a buzzword—it's at the core of everything we do. Our commitment extends from seed to cup, ensuring that every step of our tea production process respects both the environment and the communities we work with.",
+    author: "Rajesh Kumar",
+    date: "2024-03-10",
+    readTime: "7 min read",
+    category: "Sustainability",
+    image: teaGardenImage,
+    tags: ["Sustainability", "Organic", "Farming", "Environment"]
   },
   {
     id: 3,
-    title: "Organic vs Conventional: Why Organic Tea Makes a Difference",
-    excerpt: "Learn about the impact of organic farming on tea quality, environmental sustainability, and your health. Understanding certifications and what they mean...",
-    content: "The difference between organic and conventional tea goes beyond just the absence of pesticides. Organic tea farming practices contribute to soil health, biodiversity, and produce tea with superior flavor profiles...",
-    author: "Maya Krishnan",
-    date: "2024-03-10",
-    readTime: "5 min read",
-    category: "Sustainability",
-    image: "/api/placeholder/600/300",
-    tags: ["Organic", "Sustainability", "Environment", "Quality"]
+    title: "The Art of Tea Blending: Creating Perfect Flavor Profiles",
+    excerpt: "Go behind the scenes with our tea masters as they craft unique blends that balance flavor, aroma, and wellness benefits.",
+    content: "Tea blending is both an art and a science. Our master blenders combine traditional knowledge passed down through generations with modern understanding of flavor chemistry to create teas that not only taste exceptional but also deliver targeted health benefits.",
+    author: "Meera Patel",
+    date: "2024-03-05",
+    readTime: "6 min read",
+    category: "Tea Culture",
+    image: ceremonyImage,
+    tags: ["Tea Blending", "Craftsmanship", "Flavor", "Culture"]
   },
   {
     id: 4,
-    title: "Stress Relief Through Herbal Teas: Your Natural Wellness Toolkit",
-    excerpt: "Chamomile, Lavender, and Lemon Balm - discover how these gentle herbs can help you unwind and find peace in your daily routine...",
-    content: "In our fast-paced world, finding natural ways to manage stress is more important than ever. Herbal teas offer a gentle, effective way to promote relaxation and mental well-being...",
-    author: "Dr. Anjali Mehta",
-    date: "2024-03-08",
-    readTime: "7 min read",
-    category: "Wellness",
-    image: "/api/placeholder/600/300",
-    tags: ["Stress Relief", "Herbal Tea", "Wellness", "Mental Health"]
+    title: "Mindful Moments: Creating Your Perfect Tea Ritual",
+    excerpt: "Transform your daily tea time into a mindful practice that reduces stress and enhances your connection to the present moment.",
+    content: "In our fast-paced world, the simple act of preparing and drinking tea can become a powerful mindfulness practice. Creating a tea ritual helps us slow down, connect with our senses, and find moments of peace in our busy days.",
+    author: "Ananya Singh",
+    date: "2024-02-28",
+    readTime: "4 min read",
+    category: "Mindfulness",
+    image: ceremonyImage,
+    tags: ["Mindfulness", "Ritual", "Stress Relief", "Meditation"]
   },
   {
     id: 5,
-    title: "The Journey from Garden to Cup: How Our Teas Are Sourced",
-    excerpt: "Take a behind-the-scenes look at our sourcing process, from working directly with farmers to ensuring fair trade practices and quality control...",
-    content: "Every cup of tea tells a story that begins in carefully tended gardens across India. Our commitment to direct sourcing means building lasting relationships with farmers and ensuring fair compensation...",
-    author: "Organic India Team",
-    date: "2024-03-05",
-    readTime: "9 min read",
-    category: "Sourcing",
-    image: "/api/placeholder/600/300",
-    tags: ["Sourcing", "Fair Trade", "Farmers", "Quality"]
+    title: "Antioxidant Power: Understanding Green Tea's Health Benefits",
+    excerpt: "Dive deep into the science behind green tea's antioxidant properties and how they contribute to long-term health and vitality.",
+    content: "Green tea contains powerful antioxidants called polyphenols, particularly EGCG, which help protect cells from damage. These compounds support heart health, brain function, and may even help in weight management and cancer prevention.",
+    author: "Dr. Vikram Reddy",
+    date: "2024-02-20",
+    readTime: "8 min read",
+    category: "Health Science",
+    image: antioxidantsImage,
+    tags: ["Antioxidants", "Science", "EGCG", "Health"]
   },
   {
     id: 6,
-    title: "Seasonal Wellness: Choosing the Right Tea for Every Season",
-    excerpt: "Learn how to align your tea choices with seasonal changes. From warming spices in winter to cooling herbs in summer...",
-    content: "Ayurveda teaches us to live in harmony with the seasons, and our tea choices can be an important part of this practice. Each season brings its own energy and challenges...",
-    author: "Kavita Singh",
-    date: "2024-03-02",
+    title: "From Farm to Cup: Our Organic Certification Journey",
+    excerpt: "Explore the rigorous standards and processes behind our organic certification and what it means for you as a consumer.",
+    content: "Our organic certification isn't just a label—it represents a commitment to purity, sustainability, and quality. From soil management to processing, every step is carefully monitored to ensure our teas meet the highest organic standards.",
+    author: "Sunita Verma",
+    date: "2024-02-15",
     readTime: "6 min read",
-    category: "Seasonal Wellness",
-    image: "/api/placeholder/600/300",
-    tags: ["Seasonal", "Ayurveda", "Wellness", "Balance"]
+    category: "Quality",
+    image: organicImage,
+    tags: ["Organic", "Certification", "Quality", "Standards"]
   }
 ];
 
@@ -114,14 +119,11 @@ export default function Blogs() {
           {blogPosts.map((post) => (
             <Card key={post.id} className="group cursor-pointer hover:shadow-organic transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
               <div className="aspect-[16/9] bg-gradient-to-br from-primary/10 to-secondary/10 rounded-t-lg overflow-hidden">
-                <div className="w-full h-full bg-muted flex items-center justify-center">
-                  <div className="text-center space-y-2">
-                    <div className="w-16 h-16 bg-primary/20 rounded-full mx-auto flex items-center justify-center">
-                      <span className="text-2xl">🍃</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Blog Image</p>
-                  </div>
-                </div>
+                <img 
+                  src={post.image} 
+                  alt={post.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
               
               <CardContent className="p-6">
