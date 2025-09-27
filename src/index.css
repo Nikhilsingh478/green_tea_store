@@ -288,4 +288,9 @@ All colors MUST be HSL.
     position: relative;
     overflow: hidden;
   }
+
+  /* Hero title accent: make first word orange (secondary) */
+  .hero-container h1 span:first-child {
+    color: hsl(var(--secondary));
+  }
 }

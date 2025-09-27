@@ -128,9 +128,6 @@ export const Header = ({ onSearch, onCategoryFilter }: HeaderProps) => {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <Button variant="ghost" className="hover:text-primary font-medium tracking-wide">
-                Deal of the Day
-              </Button>
               <Button variant="ghost" className="hover:text-primary font-medium tracking-wide" onClick={() => navigate('/blogs')}>
                 Blogs
               </Button>
@@ -152,7 +149,7 @@ export const Header = ({ onSearch, onCategoryFilter }: HeaderProps) => {
                     placeholder="Search products..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 w-48 lg:w-64 xl:w-72 premium-input"
+                    className="pl-10 w-40 lg:w-56 xl:w-72 premium-input"
                   />
                 </form>
               </div>
@@ -176,7 +173,7 @@ export const Header = ({ onSearch, onCategoryFilter }: HeaderProps) => {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="hover:text-primary relative"
+                className="hover:text-primary relative shrink-0"
                 onClick={() => setIsCartOpen(true)}
               >
                 <ShoppingCart className="h-5 w-5" />
