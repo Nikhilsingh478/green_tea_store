@@ -6,7 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { useCart } from "@/hooks/useCart";
-import { herbalTeas, citrusTeas, spiceTeas, type Product } from "@/data/products";
+import { type Product } from "@/data/products";
+import { useProducts } from "@/hooks/useProducts";
 
 interface ProductSectionProps {
   title: string;
@@ -160,26 +161,32 @@ const ProductSection = ({ title, subtitle, products, bgGradient }: ProductSectio
 };
 
 export const CategorizedProducts = () => {
+  const { getProductsByCategory } = useProducts();
+  
+  const herbalProducts = getProductsByCategory('herbal');
+  const citrusProducts = getProductsByCategory('citrus');
+  const spiceProducts = getProductsByCategory('spice');
+  
   return (
     <>
       <ProductSection 
         title="Herbal & Floral Infusions"
         subtitle="Soothing, calming, aromatic blends"
-        products={herbalTeas}
+        products={herbalProducts}
         bgGradient="bg-gradient-to-br from-background via-organic-cream/30 to-background"
       />
       
       <ProductSection 
         title="Citrus & Refreshing Blends"
         subtitle="Zesty, tangy, and revitalizing"
-        products={citrusTeas}
+        products={citrusProducts}
         bgGradient="bg-gradient-to-br from-organic-sage/10 via-background to-organic-sage/10"
       />
       
       <ProductSection 
         title="Spice & Ayurvedic Wellness"
         subtitle="Warming, healing, immunity-boosting"
-        products={spiceTeas}
+        products={spiceProducts}
         bgGradient="bg-gradient-to-br from-organic-terra/10 via-background to-organic-terra/10"
       />
     </>

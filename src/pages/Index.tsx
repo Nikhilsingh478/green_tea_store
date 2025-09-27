@@ -4,16 +4,17 @@ import { HeroSection } from "@/components/HeroSection";
 import { CategorizedProducts } from "@/components/CategorizedProducts";
 import { SearchResults } from "@/components/SearchResults";
 import { Footer } from "@/components/Footer";
-import { allProducts, getProductsByCategory } from "@/data/products";
+import { useProducts } from "@/hooks/useProducts";
 
 const Index = () => {
+  const { products, getProductsByCategory } = useProducts();
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(allProducts);
+  const [filteredProducts, setFilteredProducts] = useState(products);
   const [isSearching, setIsSearching] = useState(false);
 
   const handleSearch = (query: string) => {
     if (query.trim()) {
-      const results = allProducts.filter(product =>
+      const results = products.filter(product =>
         product.name.toLowerCase().includes(query.toLowerCase()) ||
         product.description.toLowerCase().includes(query.toLowerCase()) ||
         product.category.toLowerCase().includes(query.toLowerCase())
@@ -26,7 +27,7 @@ const Index = () => {
 
   const handleCategoryFilter = (category: string) => {
     if (category === 'all') {
-      setFilteredProducts(allProducts);
+      setFilteredProducts(products);
       setSearchQuery("All Products");
     } else if (['herbal', 'citrus', 'spice'].includes(category)) {
       const results = getProductsByCategory(category as 'herbal' | 'citrus' | 'spice');
@@ -34,7 +35,7 @@ const Index = () => {
       setSearchQuery(`${category.charAt(0).toUpperCase() + category.slice(1)} Teas`);
     } else {
       // Handle specific product searches or wellness categories
-      const results = allProducts.filter(product =>
+      const results = products.filter(product =>
         product.name.toLowerCase().includes(category.toLowerCase()) ||
         product.description.toLowerCase().includes(category.toLowerCase()) ||
         product.benefits.some(benefit => benefit.toLowerCase().includes(category.toLowerCase()))
@@ -47,7 +48,7 @@ const Index = () => {
 
   const clearSearch = () => {
     setSearchQuery("");
-    setFilteredProducts(allProducts);
+    setFilteredProducts(products);
     setIsSearching(false);
   };
 
