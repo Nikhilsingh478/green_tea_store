@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
-import { useProducts } from "@/hooks/useProducts";
+import { useProducts, ProductWithStock } from "@/context/ProductContext";
+import { useCart } from "@/hooks/useCart";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
@@ -13,11 +14,12 @@ const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { getProductById } = useProducts();
+  const { getProductById, updateStock } = useProducts();
+  const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [isWishlisted, setIsWishlisted] = useState(false);
   
-  const product = getProductById(Number(id));
+  const product = getProductById(Number(id)) as ProductWithStock;
 
   if (!product) {
     return (
@@ -36,10 +38,24 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
-    toast({
-      title: "Added to Cart",
-      description: `${quantity} x ${product.name} added to your cart.`,
-    });
+    if (product && product.stock >= quantity) {
+      // Add to cart
+      addToCart(product, quantity);
+      
+      // Update stock
+      updateStock(product.id, product.stock - quantity);
+      
+      toast({
+        title: "Added to Cart",
+        description: `${quantity} x ${product.name} added to your cart.`,
+      });
+    } else {
+      toast({
+        title: "Insufficient Stock",
+        description: `Only ${product?.stock || 0} units available.`,
+        variant: "destructive"
+      });
+    }
   };
 
   const toggleWishlist = () => {

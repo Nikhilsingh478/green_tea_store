@@ -10,7 +10,8 @@ import { Label } from './ui/label';
 import { Switch } from './ui/switch';
 import { Plus, Edit, Trash2, Search, Package, AlertTriangle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { useProducts, ProductWithStock } from '@/hooks/useProducts';
+import { useProducts, ProductWithStock } from '@/context/ProductContext';
+import { ProductFormSchema } from '@/schemas/productSchema';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 const categories = [
@@ -101,12 +102,38 @@ export function Products() {
   };
 
   const handleSubmit = () => {
-    if (!formData.name || !formData.price || !formData.description) {
-      toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields (name, price, description).",
-        variant: "destructive"
+    try {
+      const validatedData = ProductFormSchema.parse({
+        name: formData.name,
+        description: formData.description,
+        longDescription: formData.longDescription,
+        price: parseFloat(formData.price) || 0,
+        originalPrice: formData.originalPrice ? parseFloat(formData.originalPrice) : undefined,
+        category: formData.category,
+        stock: parseInt(formData.stock) || 0,
+        rating: parseFloat(formData.rating) || 4.5,
+        reviews: parseInt(formData.reviews) || 0,
+        inStock: formData.inStock,
+        features: formData.features,
+        ingredients: formData.ingredients,
+        benefits: formData.benefits
       });
+
+      const productData = {
+        ...validatedData,
+        image: editingProduct?.image || '/api/placeholder/400/400',
+        features: validatedData.features.split(',').map(f => f.trim()).filter(f => f),
+        ingredients: validatedData.ingredients.split(',').map(i => i.trim()).filter(i => i),
+        benefits: validatedData.benefits.split(',').map(b => b.trim()).filter(b => b)
+      };
+    } catch (error) {
+      if (error instanceof Error) {
+        toast({
+          title: "Invalid Data",
+          description: error.message,
+          variant: "destructive"
+        });
+      }
       return;
     }
 
@@ -114,13 +141,13 @@ export function Products() {
       name: formData.name,
       description: formData.description,
       longDescription: formData.longDescription,
-      price: parseFloat(formData.price),
-      originalPrice: formData.originalPrice ? parseFloat(formData.originalPrice) : undefined,
+      price: Math.max(0, parseFloat(formData.price) || 0),
+      originalPrice: formData.originalPrice ? Math.max(0, parseFloat(formData.originalPrice)) : undefined,
       category: formData.category,
-      image: editingProduct?.image || '/api/placeholder/400/400', // Use existing image or placeholder
-      rating: parseFloat(formData.rating),
-      reviews: parseInt(formData.reviews),
-      stock: parseInt(formData.stock),
+      image: editingProduct?.image || '/api/placeholder/400/400',
+      rating: Math.min(5, Math.max(1, parseFloat(formData.rating) || 4.5)),
+      reviews: Math.max(0, parseInt(formData.reviews) || 0),
+      stock: Math.max(0, parseInt(formData.stock) || 0),
       inStock: formData.inStock,
       features: formData.features.split(',').map(f => f.trim()).filter(f => f),
       ingredients: formData.ingredients.split(',').map(i => i.trim()).filter(i => i),

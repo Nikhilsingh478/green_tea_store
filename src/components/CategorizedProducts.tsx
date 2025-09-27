@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { useCart } from "@/hooks/useCart";
 import { type Product } from "@/data/products";
-import { useProducts } from "@/hooks/useProducts";
+import { useProducts } from "@/context/ProductContext";
 
 interface ProductSectionProps {
   title: string;

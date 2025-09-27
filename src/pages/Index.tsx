@@ -4,7 +4,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { CategorizedProducts } from "@/components/CategorizedProducts";
 import { SearchResults } from "@/components/SearchResults";
 import { Footer } from "@/components/Footer";
-import { useProducts } from "@/hooks/useProducts";
+import { useProducts } from "@/context/ProductContext";
 
 const Index = () => {
   const { products, getProductsByCategory } = useProducts();
