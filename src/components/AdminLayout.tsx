@@ -46,6 +46,7 @@ export function AdminLayout({ children, activeSection, setActiveSection }: Admin
               <h2 className="text-xl font-bold text-sidebar-foreground brand-font">Green Tea Admin</h2>
             )}
             <Button
+              data-testid="button-sidebar-toggle"
               variant="ghost"
               size="sm"
               onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
@@ -66,6 +67,7 @@ export function AdminLayout({ children, activeSection, setActiveSection }: Admin
               return (
                 <li key={item.id}>
                   <button
+                    data-testid={`button-nav-${item.id}`}
                     onClick={() => setActiveSection(item.id)}
                     className={`w-full flex items-center gap-3 p-3 rounded-lg transition-all duration-200 ${
                       isActive 
@@ -97,9 +99,9 @@ export function AdminLayout({ children, activeSection, setActiveSection }: Admin
             <div className="flex items-center gap-4">
               {/* Notifications */}
               <div className="relative">
-                <Button variant="ghost" size="sm" className="relative hover:bg-accent">
+                <Button data-testid="button-notifications" variant="ghost" size="sm" className="relative hover:bg-accent">
                   <Bell size={20} className="text-foreground" />
-                  <Badge className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-accent text-accent-foreground text-xs p-0 flex items-center justify-center font-medium">
+                  <Badge data-testid="badge-notification-count" className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-accent text-accent-foreground text-xs p-0 flex items-center justify-center font-medium">
                     3
                   </Badge>
                 </Button>
@@ -108,7 +110,7 @@ export function AdminLayout({ children, activeSection, setActiveSection }: Admin
               {/* Admin Profile */}
               <div className="flex items-center gap-3">
                 <Avatar>
-                  <AvatarImage src="/api/placeholder/32/32" />
+                  <AvatarImage src="/placeholder.svg" />
                   <AvatarFallback className="bg-primary text-primary-foreground font-semibold">AD</AvatarFallback>
                 </Avatar>
                 <div className="hidden md:block">
@@ -118,7 +120,7 @@ export function AdminLayout({ children, activeSection, setActiveSection }: Admin
               </div>
 
               {/* Logout */}
-              <Button variant="ghost" size="sm" className="text-foreground hover:text-destructive hover:bg-destructive/10">
+              <Button data-testid="button-logout" variant="ghost" size="sm" className="text-foreground hover:text-destructive hover:bg-destructive/10">
                 <LogOut size={20} />
               </Button>
             </div>
