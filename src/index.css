@@ -280,18 +280,12 @@ All colors MUST be HSL.
     background-size: 300% 300%;
   }
 
-  /* Fix hero section layout */
+  /* Hero section layout */
   .hero-container {
     min-height: 95vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
-  }
-
-  /* Ensure cart icon is visible */
-  .cart-button {
-    @apply relative inline-flex items-center justify-center;
-    z-index: 50;
   }
 }
