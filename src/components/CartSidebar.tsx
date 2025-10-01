@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { X, Plus, Minus, ShoppingBag, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/hooks/useCart";
@@ -45,6 +45,9 @@ export const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
               </Badge>
             )}
           </SheetTitle>
+          <SheetDescription className="sr-only">
+            Your shopping cart items, quantities, and totals.
+          </SheetDescription>
         </SheetHeader>
 
         <div className="flex-1 overflow-auto py-6">

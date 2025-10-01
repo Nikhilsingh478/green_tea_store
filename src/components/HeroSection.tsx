@@ -3,9 +3,15 @@ import { Button } from "@/components/ui/button";
 
 export const HeroSection = () => {
   const scrollToProducts = () => {
-    const productsSection = document.getElementById('products-section');
-    if (productsSection) {
-      productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const el = document.getElementById('products-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      // Fallback: set URL hash so the browser scrolls when section mounts
+      window.location.hash = 'products-section';
+      setTimeout(() => {
+        document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
     }
   };
 
