@@ -168,8 +168,8 @@ export const CategorizedProducts = () => {
   const spiceProducts = getProductsByCategory('spice');
   
   return (
-    <>
-      <ProductSection 
+    <div id="products-section">
+      <ProductSection
         title="Herbal & Floral Infusions"
         subtitle="Soothing, calming, aromatic blends"
         products={herbalProducts}
@@ -189,6 +189,6 @@ export const CategorizedProducts = () => {
         products={spiceProducts}
         bgGradient="bg-gradient-to-br from-organic-terra/10 via-background to-organic-terra/10"
       />
-    </>
+    </div>
   );
 };

@@ -2,6 +2,13 @@ import { Leaf, ShoppingBag, Star, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const HeroSection = () => {
+  const scrollToProducts = () => {
+    const productsSection = document.getElementById('products-section');
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <section className="hero-container bg-gradient-to-br from-background via-background/50 to-primary/5">
       <div className="container mx-auto container-padding relative z-10">
@@ -35,7 +42,7 @@ export const HeroSection = () => {
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button size="lg" className="h-14 px-8 text-base font-semibold group">
+              <Button size="lg" className="h-14 px-8 text-base font-semibold group" onClick={scrollToProducts}>
                 <ShoppingBag className="h-5 w-5 mr-2" />
                 Shop Now
                 <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
